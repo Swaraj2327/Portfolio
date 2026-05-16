@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reshma | Technical Portfolio</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: #07111f;
+      color: #ffffff;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Navbar */
+    .navbar {
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      background: rgba(7, 17, 31, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .nav-container {
+      max-width: 1150px;
+      margin: auto;
+      padding: 18px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: #38bdf8;
+    }
+
+    .logo span {
+      color: #ffffff;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 15px;
+      color: #dbeafe;
+      transition: 0.3s ease;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: "";
+      width: 0;
+      height: 2px;
+      background: #38bdf8;
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-links a:hover {
+      color: #38bdf8;
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      padding: 130px 24px 70px;
+      display: flex;
+      align-items: center;
+      background:
+        radial-gradient(circle at top left, rgba(56, 189, 248, 0.22), transparent 35%),
+        radial-gradient(circle at bottom right, rgba(99, 102, 241, 0.18), transparent 35%),
+        #07111f;
+    }
+
+    .hero-container {
+      max-width: 1150px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .hero-content .tagline {
+      display: inline-block;
+      padding: 8px 16px;
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      border-radius: 30px;
+      color: #7dd3fc;
+      font-size: 14px;
+      margin-bottom: 22px;
+    }
+
+    .hero-content h1 {
+      font-size: clamp(42px, 6vw, 72px);
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    .hero-content h1 span {
+      color: #38bdf8;
+    }
+
+    .hero-content p {
+      max-width: 620px;
+      color: #cbd5e1;
+      font-size: 18px;
+      margin-bottom: 32px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 13px 24px;
+      border-radius: 12px;
+      font-weight: 600;
+      transition: 0.3s ease;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background: #38bdf8;
+      color: #07111f;
+      box-shadow: 0 0 25px rgba(56, 189, 248, 0.35);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 0 35px rgba(56, 189, 248, 0.55);
+    }
+
+    .btn-secondary {
+      border-color: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+    }
+
+    .btn-secondary:hover {
+      border-color: #38bdf8;
+      color: #38bdf8;
+      transform: translateY(-4px);
+    }
+
+    .hero-image {
+      display: flex;
+      justify-content: center;
+    }
+
+    .image-card {
+      width: 340px;
+      height: 420px;
+      border-radius: 30px;
+      background:
+        linear-gradient(145deg, rgba(56, 189, 248, 0.22), rgba(99, 102, 241, 0.18)),
+        url("https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80");
+      background-size: cover;
+      background-position: center;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.42);
+      position: relative;
+      overflow: hidden;
+      animation: floatImage 4s ease-in-out infinite;
+    }
+
+    .image-card::after {
+      content: "</>";
+      position: absolute;
+      right: 22px;
+      bottom: 18px;
+      font-size: 56px;
+      font-weight: 800;
+      color: rgba(255, 255, 255, 0.24);
+    }
+
+    @keyframes floatImage {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-16px);
+      }
+    }
+
+    /* Sections */
+    section {
+      padding: 90px 24px;
+    }
+
+    .section-container {
+      max-width: 1150px;
+      margin: auto;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-title h2 {
+      font-size: 38px;
+      margin-bottom: 12px;
+    }
+
+    .section-title p {
+      color: #94a3b8;
+      max-width: 650px;
+      margin: auto;
+    }
+
+    /* About */
+    .about {
+      background: #0b1728;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .about-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 24px;
+      padding: 34px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.24);
+    }
+
+    .about-card h3 {
+      color: #38bdf8;
+      font-size: 26px;
+      margin-bottom: 18px;
+    }
+
+    .about-card p {
+      color: #cbd5e1;
+      margin-bottom: 16px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .stat-box {
+      background: rgba(56, 189, 248, 0.08);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-radius: 20px;
+      padding: 24px;
+      text-align: center;
+      transition: 0.3s ease;
+    }
+
+    .stat-box:hover {
+      transform: translateY(-7px);
+      background: rgba(56, 189, 248, 0.14);
+    }
+
+    .stat-box h3 {
+      font-size: 28px;
+      color: #38bdf8;
+      margin-bottom: 6px;
+    }
+
+    .stat-box p {
+      color: #cbd5e1;
+      font-size: 14px;
+    }
+
+    /* Skills */
+    .skills {
+      background: #07111f;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .skill-card {
+      background: linear-gradient(145deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.78));
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 22px;
+      padding: 26px 20px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      transition: 0.35s ease;
+      animation: fadeUp 0.9s ease forwards;
+      opacity: 0;
+    }
+
+    .skill-card:nth-child(1) { animation-delay: 0.1s; }
+    .skill-card:nth-child(2) { animation-delay: 0.2s; }
+    .skill-card:nth-child(3) { animation-delay: 0.3s; }
+    .skill-card:nth-child(4) { animation-delay: 0.4s; }
+    .skill-card:nth-child(5) { animation-delay: 0.5s; }
+    .skill-card:nth-child(6) { animation-delay: 0.6s; }
+    .skill-card:nth-child(7) { animation-delay: 0.7s; }
+    .skill-card:nth-child(8) { animation-delay: 0.8s; }
+
+    .skill-card::before {
+      content: "";
+      position: absolute;
+      width: 110px;
+      height: 110px;
+      background: #38bdf8;
+      filter: blur(55px);
+      opacity: 0;
+      top: -30px;
+      right: -30px;
+      transition: 0.35s ease;
+    }
+
+    .skill-card:hover::before {
+      opacity: 0.75;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-12px) scale(1.03);
+      border-color: rgba(56, 189, 248, 0.55);
+      box-shadow: 0 24px 55px rgba(56, 189, 248, 0.15);
+    }
+
+    .skill-icon {
+      width: 58px;
+      height: 58px;
+      margin: auto;
+      margin-bottom: 18px;
+      border-radius: 18px;
+      background: rgba(56, 189, 248, 0.14);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      color: #38bdf8;
+    }
+
+    .skill-card h3 {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .skill-card p {
+      font-size: 14px;
+      color: #94a3b8;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(35px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Projects Highlight */
+    .projects {
+      background: #0b1728;
+    }
+
+    .project-box {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 26px;
+      padding: 36px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .project-box h3 {
+      font-size: 28px;
+      color: #38bdf8;
+      margin-bottom: 15px;
+    }
+
+    .project-box p {
+      color: #cbd5e1;
+      margin-bottom: 16px;
+    }
+
+    .code-window {
+      background: #020617;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(56, 189, 248, 0.22);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+    }
+
+    .window-top {
+      padding: 14px;
+      background: #111827;
+      display: flex;
+      gap: 8px;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #64748b;
+    }
+
+    .code-window pre {
+      padding: 24px;
+      color: #7dd3fc;
+      font-size: 14px;
+      overflow-x: auto;
+    }
+
+    /* Footer */
+    footer {
+      background: #020617;
+      padding: 34px 24px;
+      text-align: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    footer h3 {
+      color: #38bdf8;
+      margin-bottom: 8px;
+    }
+
+    footer p {
+      color: #94a3b8;
+      font-size: 14px;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero-container,
+      .about-grid,
+      .project-box {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .hero-buttons {
+        justify-content: center;
+      }
+
+      .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .nav-links {
+        gap: 16px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .nav-container {
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .hero {
+        padding-top: 170px;
+      }
+
+      .image-card {
+        width: 280px;
+        height: 350px;
+      }
+
+      .skills-grid,
+      .stats {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="#home" class="logo">Reshma<span>.</span></a>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Portfolio</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Header / Hero Section -->
+  <header class="hero" id="home">
+    <div class="hero-container">
+      <div class="hero-content">
+        <span class="tagline">Programming • Data • Cloud • Engineering</span>
+        <h1>Hi, I am <span>Reshma</span></h1>
+        <p>
+          A technology professional with a programming-focused mindset, a Master’s degree from
+          the University of Southern Mississippi, and a passion for building clean, scalable,
+          and meaningful technical solutions.
+        </p>
+        <div class="hero-buttons">
+          <a href="#skills" class="btn btn-primary">View My Skills</a>
+          <a href="#contact" class="btn btn-secondary">Contact Me</a>
+        </div>
+      </div>
+
+      <div class="hero-image">
+        <div class="image-card" aria-label="Technology themed portfolio image"></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- About Section -->
+  <section class="about" id="about">
+    <div class="section-container">
+      <div class="section-title">
+        <h2>About Me</h2>
+        <p>A brief introduction to my background, education, and technical interests.</p>
+      </div>
+
+      <div class="about-grid">
+        <div class="stats">
+          <div class="stat-box">
+            <h3>MS</h3>
+            <p>University of Southern Mississippi</p>
+          </div>
+          <div class="stat-box">
+            <h3>Tech</h3>
+            <p>Programming & Development</p>
+          </div>
+          <div class="stat-box">
+            <h3>Data</h3>
+            <p>Analytics & Engineering Mindset</p>
+          </div>
+          <div class="stat-box">
+            <h3>Cloud</h3>
+            <p>Modern Technical Solutions</p>
+          </div>
+        </div>
+
+        <div class="about-card">
+          <h3>Who I Am</h3>
+          <p>
+            I am Reshma, a technical professional with a Master’s degree from the University of
+            Southern Mississippi. My interests are centered around programming, data-driven
+            solutions, software development, and modern technology systems.
+          </p>
+          <p>
+            I enjoy working on technical challenges, learning new tools, and creating solutions
+            that are practical, organized, and scalable. This portfolio reflects my passion for
+            technology and my commitment to continuous professional growth.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section class="skills" id="skills">
+    <div class="section-container">
+      <div class="section-title">
+        <h2>Technical Skill Set</h2>
+        <p>Core technical areas that represent my programming and technology background.</p>
+      </div>
+
+      <div class="skills-grid">
+        <div class="skill-card">
+          <div class="skill-icon">💻</div>
+          <h3>Programming</h3>
+          <p>Writing clean, logical, and maintainable code for technical applications.</p>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-icon">🌐</div>
+          <h3>Web Development</h3>
+          <p>Creating structured, responsive, and visually appealing web interfaces.</p>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-icon">🗄️</div>
+          <h3>Databases</h3>
+          <p>Understanding data storage, querying, organization, and backend workflows.</p>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-icon">☁️</div>
+          <h3>Cloud Concepts</h3>
+          <p>Working with modern cloud-based systems, deployment ideas, and scalability.</p>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-icon">📊</div>
+          <h3>Data Analysis</h3>
+          <p>Using analytical thinking to understand data and support decision-making.</p>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-icon">⚙️</div>
+          <h3>Problem Solving</h3>
+          <p>Breaking complex problems into clear, practical, and efficient solutions.</p>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-icon">🔐</div>
+          <h3>System Design</h3>
+          <p>Thinking through reliable, secure, and scalable technical architecture.</p>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-icon">🚀</div>
+          <h3>Continuous Learning</h3>
+          <p>Adapting to new technologies, tools, and industry best practices.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio / Technical Highlight Section -->
+  <section class="projects" id="projects">
+    <div class="section-container">
+      <div class="section-title">
+        <h2>Portfolio Focus</h2>
+        <p>A technical portfolio designed to reflect a programming and software-oriented profile.</p>
+      </div>
+
+      <div class="project-box">
+        <div>
+          <h3>Technology-Driven Profile</h3>
+          <p>
+            My portfolio is focused on programming, technical problem-solving, data systems,
+            and modern development practices. I aim to build solutions that are functional,
+            user-friendly, and aligned with real-world technology needs.
+          </p>
+          <p>
+            This section can be expanded later with project cards, GitHub links, case studies,
+            certifications, and professional experience.
+          </p>
+        </div>
+
+        <div class="code-window">
+          <div class="window-top">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </div>
+          <pre>
+const portfolio = {
+  name: "Reshma",
+  education: "University of Southern Mississippi",
+  field: "Programming & Technology",
+  focus: ["Clean Code", "Data", "Cloud", "Scalable Solutions"],
+  goal: "Build meaningful technical solutions"
+};
+          </pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contact">
+    <h3>Reshma</h3>
+    <p>Programming & Technology Portfolio</p>
+    <p>© 2026 Reshma. All Rights Reserved.</p>
+  </footer>
+</body>
+</html>
